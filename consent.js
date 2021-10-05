@@ -161,7 +161,7 @@ const CONSENT_HTML_STYLE_UU = `<style>
 
 // displays the informed consent page
 let consent_block = {
-    type: 'survey-multi-select',
+    type: jsPsychSurveyMultiSelect,
     data : {uil_save : true},
     preamble: CONSENT_HTML_STYLE_UU + CONSENT_HTML,
     required_message: IF_REQUIRED_FEEDBACK_MESSAGE,
@@ -175,28 +175,17 @@ let consent_block = {
             name: CONSENT_REFERENCE_NAME
         }
     ],
-    on_finish: function(data){
-        let consent_choice = data.responses;   
+    on_finish: function(data) {
+        let consent_choice = data.response;   
         data.consent_choice_response = consent_choice;
     }
 };
 
-/**
- * Obtains the consent of the participant.
- *
- * @returns {string}
- */
-function getConsentData()
-{
-    let data = jsPsych.data.get().select('consent_choice_response');
-    console.log(data);
-    let consent_trial_data = JSON.parse(data.values[0]);
-    return consent_trial_data.consent;
-}
 
 // Is displayed when no consent has been given.
 let no_consent_end_screen = {
     type: 'html-button-response',
+    type: jsPsychHtmlButtonResponse,
     stimulus: DEBRIEF_MESSAGE_NO_CONSENT,
     choices: [],
     trial_duration: FINISH_TEXT_DUR,
@@ -206,14 +195,27 @@ let no_consent_end_screen = {
 };
 
 // Tests wheter consent has been given.
-// If no consent has been given It displays the
-// no_consent_screen.
+// If no consent has been given, it displays the
+// no_consent_screen and finishes the experiment asap.
 //
 let if_node_consent = {
     timeline: [no_consent_end_screen],
     conditional_function: function(data) {
-        let mydata = getConsentData();
-        if (mydata == CONSENT_STATEMENT) {
+        /**
+         * Whether or not the participant gave consent.
+         *
+         * @returns {bool}
+         */
+        function ppGaveConsent()
+        {
+            let data = jsPsych.data.get();
+            let consent_trial = data.trials[data.trials.length - 1]
+            console.assert(consent_trial.trial_type === 'survey-multi-select');
+            return consent_trial.response.consent.includes(CONSENT_STATEMENT);
+        }
+
+        let agreed_with_consent = ppGaveConsent();
+        if (agreed_with_consent) {
             consent_given = true;
             return false;
         } else {

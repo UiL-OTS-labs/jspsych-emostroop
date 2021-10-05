@@ -33,7 +33,8 @@ const AGE_HTML = `
     `;
 
 const survey_1 = {
-    type :      'survey-html-form',
+    //type :      'survey-html-form',
+    type :      jsPsychSurveyHtmlForm,
     data: {
         uil_save : true,
         survey_data_flag: true
@@ -43,16 +44,16 @@ const survey_1 = {
 
     // flatten json output
     on_finish : function(data) {
-        let responses = JSON.parse(data.responses);
-        Object.keys(responses).forEach(
+        let response = data.response;
+        Object.keys(response).forEach(
             function (key) {
                 if (key in data) {
                     console.warn("Oops overwriting existing key in data");
                 }
-                data[key] = responses[key];
+                data[key] = response[key];
             }
         );
-        delete data.responses;
+        delete data.response;
     }
 };
 
@@ -82,7 +83,8 @@ const HAND_QUESTION = 'Which hand do you prefer to write with?';
 const HAND_OPTIONS = ["Left", "Right"];
 
 const survey_2 = {
-    type: 'survey-multi-choice',
+    //type: 'survey-multi-choice',
+    type: jsPsychSurveyMultiChoice,
     data: {
         uil_save : true,
         survey_data_flag : true
@@ -119,21 +121,21 @@ const survey_2 = {
     ],
 
     on_finish: function(data){
-        let responses = JSON.parse(data.responses);
-        Object.keys(responses).forEach(
+        let response = data.response;
+        Object.keys(response).forEach(
             function (key) {
                 if (key in data) {
                     console.warn("Oops overwriting existing key in data");
                 }
-                data[key] = responses[key];
+                data[key] = response[key];
             }
         );
-        delete data.responses;
+        delete data.response;
     }
 };
 
 let survey_review = {
-    type: "html-button-response",
+    type: jsPsychHtmlButtonResponse,
     stimulus: function(data){
 
         let survey_1_data= 
@@ -170,7 +172,7 @@ let survey_review = {
     response_ends_trial: true,
     on_finish: function(data){
         // Repeat the survey if true (0) was not pressed
-        repeat_survey = data.button_pressed != 0;
+        repeat_survey = data.response !== 0;
     }
 };
 

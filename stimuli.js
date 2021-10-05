@@ -12,30 +12,36 @@ const LISTS = [
     // "list3"
 ];
 
+// colors
+const RED = "red";
+const GREEN = "green";
+const YELLOW = "yellow";
+const BLUE = "blue";
+
 const PRACTICE_ITEMS = [
     {
         id : 1,
         item_type : CONGRUENT,
-        type : PLUGIN_NAME,
-        stimulus : "<p style=color:red>red</p>"
+        word : "red",
+        color : RED
     },
     {
         id : 2,
         item_type : INCONGRUENT,
-        type : PLUGIN_NAME,
-        stimulus : "<p style=color:red>blue</p>"
+        word : "red",
+        color : BLUE 
     },
     {
         id : 3,
         item_type : CONGRUENT,
-        type : PLUGIN_NAME,
-        stimulus : "<p style=color:red>red</p>"
+        word : "green",
+        color : GREEN,
     },
     {
         id : 4,
         item_type : INCONGRUENT,
-        type : PLUGIN_NAME,
-        stimulus : "<p style=color:red>blue</p>"
+        word : "red",
+        color : YELLOW
     }
 ];
 
@@ -44,6 +50,30 @@ const PRACTICE_ITEMS = [
  * '#' it's reaction time will be recorded. So don't put any '#" elsewhere...
  */
 const LIST_GROUP1 = [
+    {
+        id : 1,
+        item_type : CONGRUENT,
+        word : "red",
+        color : RED
+    },
+    {
+        id : 2,
+        item_type : INCONGRUENT,
+        word : "red",
+        color : BLUE 
+    },
+    {
+        id : 3,
+        item_type : CONGRUENT,
+        word : "green",
+        color : GREEN,
+    },
+    {
+        id : 4,
+        item_type : INCONGRUENT,
+        word : "red",
+        color : YELLOW
+    }
 ];
 
 /*
@@ -52,14 +82,28 @@ const LIST_GROUP1 = [
  */
 const LIST_GROUP2 = [
     {
+        id : 1,
+        item_type : INCONGRUENT,
+        word : "red",
+        color : BLUE, 
+    },
+    {
+        id : 2,
+        item_type : CONGRUENT,
+        word : "red",
+        color : RED 
+    },
+    {
+        id : 3,
+        item_type : INCONGRUENT,
+        word : "green",
+        color : RED,
+    },
+    {
         id : 4,
-        item_type : FILLER,
-        stimulus :
-            "The little girl did not play with her brother\n"           +
-            "in the colourful playground next to their weedy\n"         +
-            "garden.\n"                                                 ,
-        question : "",
-        qanswer : undefined
+        item_type : CONGRUENT,
+        word : "yellow",
+        color : YELLOW
     }
 ];
 
