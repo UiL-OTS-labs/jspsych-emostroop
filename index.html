@@ -99,10 +99,22 @@ function kickOffExperiment() {
         response_ends_trial : true
     };
 
-    let instruction_screen_practice = {
+    let instruction_screen_practice1 = {
         type : jsPsychHtmlKeyboardResponse,
-        stimulus : PRE_PRACTICE_INSTRUCTION,
-        choices : [" "],
+        stimulus : PRE_PRACTICE_INSTRUCTION1,
+        choices : ["Enter"],
+        response_ends_trial : true
+    };    
+    let instruction_screen_practice2 = {
+        type : jsPsychHtmlKeyboardResponse,
+        stimulus : PRE_PRACTICE_INSTRUCTION2,
+        choices : ["Enter"],
+        response_ends_trial : true
+    };    
+    let instruction_screen_practice3 = {
+        type : jsPsychHtmlKeyboardResponse,
+        stimulus : PRE_PRACTICE_INSTRUCTION3,
+        choices : ["Enter"],
         response_ends_trial : true
     };    
 
@@ -145,13 +157,15 @@ function kickOffExperiment() {
     timeline.push(welcome_screen);
 
     // Obtain informed consent.
-    timeline.push(consent_procedure);
+    //timeline.push(consent_procedure);
 
     // add survey
-    timeline.push(survey_procedure);
+    //timeline.push(survey_procedure);
     
     // Add the different parts of the experiment to the timeline
-    timeline.push(instruction_screen_practice);
+    timeline.push(instruction_screen_practice1);
+    timeline.push(instruction_screen_practice2);
+    timeline.push(instruction_screen_practice3);
 
     timeline.push(practice_procedure);
     timeline.push(end_practice_screen);

@@ -20,30 +20,60 @@ const WELCOME_INSTRUCTION =
         "Press the spacebar to continue."                               +
     "</p>";
 
-const PRE_PRACTICE_INSTRUCTION =
+const PRE_PRACTICE_INSTRUCTION1 =
     "<h1>"                                                              +
-        "Task instructions"                                            +
+        "Welkom bij het experiment ‘Gekleurde Woorden’. "               +
     "</h1>"                                                             +
     "<p>"                                                               +
-        "You are now going to see sentences on the screen, one after "  +
-        "the other. Each sentence is broken up into words. You can "    +
-        "reveal the sentence word-by-word by repeatedly hitting "       +
-        "the spacebar. "                                                +
-        "This way you will go through each sentence. Your task is to "  +
-        "<i>silently</i> read each sentence as quickly as possible."    +
+        "Je krijgt zo meteen een reeks woorden te zien "                +
+        "op het computerscherm. Deze woorden kunnen in het "            +
+        "rood, geel, groen of blauw op het scherm verschijnen. "        +
+        "Als je een woord ziet, gaat het erom dat je zo "               +
+        "snel mogelijk de kleur van het woord benoemt via "             +
+        "een druk op een toets. Het gaat in dit experiment "            +
+        "dus niet om de betekenis van het woord, maar slechts "         +
+        "om de kleur. Telkens als je de kleur hebt benoemd, "           +
+        "krijg je het volgende woord te zien. "                         +
     "</p>"                                                              +
     "<p>"                                                               +
-        "Sometimes a statement about a sentence will come up. You then "+
-        "will have to indicate whether the statement is correct or "    +
-        "not. Therefore it is important that you really <i>read</i> "   +
-        "each sentence."                                                +
+        "Klik op enter om door "                                        +
+        "te gaan naar de volgende pagina."                              +
+    "</p>"                                                              ;
+
+const PRE_PRACTICE_INSTRUCTION2 =
     "<p>"                                                               +
-        "First you will read some practice sentences. These are not "   +
-        "part of the actual experiment."                                +
+        "Om de kleur van een woord te benoemen, druk je op een toets."  + 
+        "Je gebruikt de twee toetsen links van de spatiebalk "          +
+        "en de twee toetsen rechts van de spatiebalk. "                 +
+        "Dit zijn de ALT en WINDOWS toetsen. "                          +
     "</p>"                                                              +
     "<p>"                                                               +
-        "<i>Hit the spacebar when ready to start.</i>"                  +
-    "</p>";
+        "De linker WINDOWS toets staat voor rood, "                     +
+        "de linker ALT toets staat voor groen. "                        +
+        "De rechter ALT toets staat voor blauw, "                       +
+        "de rechter WINDOWS toets staat voor geel."                     +
+    "</p>"                                                              +
+    "<p>"                                                               +
+        "Druk op enter om verder te gaan."                              +
+    "</p>"                                                              ;
+
+const PRE_PRACTICE_INSTRUCTION3 =
+    "<p>"                                                               +
+        "Je gebruikt je wijs- en middelvinger "                         +
+        "van beide handen om de toetsen in te drukken. "                +
+        "Het is de bedoeling dat je deze vingers "                      +
+        "gedurende het hele experiment op "                             +
+        "de ALT en WINDOWS toetsen houdt. "                             +
+        "Natuurlijk kun je tussendoor wel "                             +
+        "even verzitten en bewegen. "                                   +
+    "</p>"                                                              +
+    "<p>"                                                               +
+        "Geef je antwoord zo snel mogelijk, maar het "                  +
+        "is ook belangrijk om het juiste antwoord te geven."            +
+    "</p>"                                                              +
+    "<p>"                                                               +
+        "Druk op enter om verder te gaan."                              +
+    "</p>"                                                              ;
 
 const PRE_TEST_INSTRUCTION = 
     "<p>"                                                               +
