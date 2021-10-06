@@ -42,16 +42,14 @@ const PRE_PRACTICE_INSTRUCTION1 =
 
 const PRE_PRACTICE_INSTRUCTION2 =
     "<p>"                                                               +
-        "Om de kleur van een woord te benoemen, druk je op een toets."  + 
-        "Je gebruikt de twee toetsen links van de spatiebalk "          +
-        "en de twee toetsen rechts van de spatiebalk. "                 +
-        "Dit zijn de ALT en WINDOWS toetsen. "                          +
+        "Om de kleur van een woord te benoemen, druk je op een toets. " + 
+        "Je gebruikt de toetsen 1, 2, 9 en 0."                          +
     "</p>"                                                              +
     "<p>"                                                               +
-        "De linker WINDOWS toets staat voor rood, "                     +
-        "de linker ALT toets staat voor groen. "                        +
-        "De rechter ALT toets staat voor blauw, "                       +
-        "de rechter WINDOWS toets staat voor geel."                     +
+        "De toets <b>1</b> staat voor rood,<br>"                        +
+        "de toets <b>2</b> staat voor groen.<br> "                      +
+        "De toets <b>9</b> staat voor blauw,<br> "                      +
+        "de toets <b>0</b> staat voor geel.<br>"                        +
     "</p>"                                                              +
     "<p>"                                                               +
         "Druk op enter om verder te gaan."                              +
@@ -63,7 +61,7 @@ const PRE_PRACTICE_INSTRUCTION3 =
         "van beide handen om de toetsen in te drukken. "                +
         "Het is de bedoeling dat je deze vingers "                      +
         "gedurende het hele experiment op "                             +
-        "de ALT en WINDOWS toetsen houdt. "                             +
+        "de toetsen houdt. "                                            +
         "Natuurlijk kun je tussendoor wel "                             +
         "even verzitten en bewegen. "                                   +
     "</p>"                                                              +

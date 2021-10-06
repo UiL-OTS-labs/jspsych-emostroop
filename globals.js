@@ -52,3 +52,12 @@ const GROUPING_STRING = null;
 // will not be displayed in the stimulus
 //const GROUPING_STRING = "/";
 
+// Stores the correct reponse for a given color.
+const CORRECT_RESPONSES = {
+    red     : "1",
+    green   : "2",
+    blue    : "9",
+    yellow  : "0"
+};
+
+const FEEDBACK_DURATION = 1000;

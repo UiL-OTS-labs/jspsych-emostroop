@@ -133,8 +133,9 @@ function kickOffExperiment() {
     };
 
     let practice_procedure = {
+        last_correct : undefined,
         timeline : [
-            {
+            {   // presents the word
                 type : jsPsychHtmlKeyboardResponse,
                 stimulus : function() {
                     let color = jsPsych.timelineVariable('color');
@@ -142,8 +143,22 @@ function kickOffExperiment() {
                     let html = `<p style="color:${color}">${word}</p>`;
                     return html;
                 },
-                choices : [' ', 'q']
-//                stimulus : jsPsych.timelineVariable('word')
+                choices : ['1', '2', '9', '0'],
+                on_finish : function (data) {
+                    let color = jsPsych.timelineVariable('color');
+                    practice_procedure.last_correct = data.response === CORRECT_RESPONSES[color];
+                }
+            },
+            {   // presents the feedback.
+                type : jsPsychHtmlKeyboardResponse,
+                choices : ['1', '2', '9', '0'],
+                trial_duration : FEEDBACK_DURATION,
+                stimulus : function () {
+                    if (practice_procedure.last_correct)
+                        return "<p>correct</p>";
+                    else
+                        return "<p>incorrect</p>";
+                }
             }
         ],
         timeline_variables : practice_items
