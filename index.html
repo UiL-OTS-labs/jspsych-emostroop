@@ -147,11 +147,12 @@ function kickOffExperiment() {
                 on_finish : function (data) {
                     let color = jsPsych.timelineVariable('color');
                     practice_procedure.last_correct = data.response === CORRECT_RESPONSES[color];
+                    data.correct == data.response === CORRECT_RESPONSES[color];
                 }
             },
             {   // presents the feedback.
                 type : jsPsychHtmlKeyboardResponse,
-                choices : ['1', '2', '9', '0'],
+                choices : [], //jsPsych.NO_KEYS],
                 trial_duration : FEEDBACK_DURATION,
                 stimulus : function () {
                     if (practice_procedure.last_correct)
@@ -163,6 +164,41 @@ function kickOffExperiment() {
         ],
         timeline_variables : practice_items
     }
+
+    let test_procedure = {
+        timeline : [
+            {   // presents the word
+                type : jsPsychHtmlKeyboardResponse,
+                stimulus : function() {
+                    let color = jsPsych.timelineVariable('color');
+                    let word  = jsPsych.timelineVariable('word');
+                    let html = `<p style="color:${color}">${word}</p>`;
+                    return html;
+                },
+                choices : ['1', '2', '9', '0'],
+                on_finish : function (data) {
+                    let color = jsPsych.timelineVariable('color');
+                    practice_procedure.last_correct = data.response === CORRECT_RESPONSES[color];
+                    data.correct ==
+                }
+            },
+            {   // presents the feedback.
+                type : jsPsychHtmlKeyboardResponse,
+                choices : [], //jsPsych.NO_KEYS],
+                trial_duration : FEEDBACK_DURATION,
+                stimulus : function () {
+                    if (practice_procedure.last_correct)
+                        return "<p>correct</p>";
+                    else
+                        return "<p>incorrect</p>";
+                }
+            }
+        ],
+        timeline_variables : practice_items
+    }
+        {
+        }
+    };
 
     //////////////// timeline /////////////////////////////////
     var timeline = [];
