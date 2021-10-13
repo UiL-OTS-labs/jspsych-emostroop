@@ -61,3 +61,7 @@ const CORRECT_RESPONSES = {
 };
 
 const FEEDBACK_DURATION = 1000;
+
+const WORD_FONT_FAM     = "DejavuSansMono";
+const WORD_FONT_SIZE    = "50px";
+const WORD_FONT_WEIGHT  = "bold";

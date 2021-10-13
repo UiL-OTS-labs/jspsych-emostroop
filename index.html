@@ -59,6 +59,7 @@ const jsPsych = initJsPsych(
 );
 
 const KEY_CODE_SPACE = 32;
+
 // this function will eventually run the jsPsych timeline
 function kickOffExperiment() {
 
@@ -132,17 +133,25 @@ function kickOffExperiment() {
         trial_duration : FINISH_TEXT_DUR
     };
 
+    let present_word = function() {
+        let color = jsPsych.timelineVariable('color');
+        let word  = jsPsych.timelineVariable('word');
+
+        let style = `color:${color};`                   +
+                    `font-family:${WORD_FONT_FAM};`     +
+                    `font-size:${WORD_FONT_SIZE};`      +
+                    `font-weight=${WORD_FONT_WEIGHT}`;
+
+        let html = `<p style="${style}">${word}</p>`;
+        return html;
+    }
+
     let practice_procedure = {
         last_correct : undefined,
         timeline : [
             {   // presents the word
                 type : jsPsychHtmlKeyboardResponse,
-                stimulus : function() {
-                    let color = jsPsych.timelineVariable('color');
-                    let word  = jsPsych.timelineVariable('word');
-                    let html = `<p style="color:${color}">${word}</p>`;
-                    return html;
-                },
+                stimulus : present_word,
                 choices : ['1', '2', '9', '0'],
                 on_finish : function (data) {
                     let color = jsPsych.timelineVariable('color');
@@ -169,35 +178,16 @@ function kickOffExperiment() {
         timeline : [
             {   // presents the word
                 type : jsPsychHtmlKeyboardResponse,
-                stimulus : function() {
-                    let color = jsPsych.timelineVariable('color');
-                    let word  = jsPsych.timelineVariable('word');
-                    let html = `<p style="color:${color}">${word}</p>`;
-                    return html;
-                },
+                stimulus : present_word,
                 choices : ['1', '2', '9', '0'],
                 on_finish : function (data) {
                     let color = jsPsych.timelineVariable('color');
                     practice_procedure.last_correct = data.response === CORRECT_RESPONSES[color];
-                    data.correct ==
-                }
-            },
-            {   // presents the feedback.
-                type : jsPsychHtmlKeyboardResponse,
-                choices : [], //jsPsych.NO_KEYS],
-                trial_duration : FEEDBACK_DURATION,
-                stimulus : function () {
-                    if (practice_procedure.last_correct)
-                        return "<p>correct</p>";
-                    else
-                        return "<p>incorrect</p>";
+                    data.correct = data.response === data.response === CORRECT_RESPONSES[color];
                 }
             }
         ],
-        timeline_variables : practice_items
-    }
-        {
-        }
+        timeline_variables : test_items
     };
 
     //////////////// timeline /////////////////////////////////
@@ -220,7 +210,7 @@ function kickOffExperiment() {
 
     timeline.push(practice_procedure);
     timeline.push(end_practice_screen);
-    //timeline.push(test_items);
+    timeline.push(test_procedure);
     timeline.push(end_experiment);
 
     // Start jsPsych when running on a Desktop or Laptop style pc.
