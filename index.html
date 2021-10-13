@@ -29,6 +29,7 @@
         <script src="instructions.js"></script>
         <script src="stimuli.js"></script>
         <script src="survey.js"></script>
+        <script src="practice-stats.js"></script>
 
         <style>
             .jspsych-survey-multi-choice-text {
@@ -146,6 +147,8 @@ function kickOffExperiment() {
         return html;
     }
 
+    let pstats = new PracticeStats(75);
+
     let practice_procedure = {
         last_correct : undefined,
         timeline : [
@@ -156,7 +159,8 @@ function kickOffExperiment() {
                 on_finish : function (data) {
                     let color = jsPsych.timelineVariable('color');
                     practice_procedure.last_correct = data.response === CORRECT_RESPONSES[color];
-                    data.correct == data.response === CORRECT_RESPONSES[color];
+                    data.correct = data.response === CORRECT_RESPONSES[color];
+                    pstats.appendResult(data.correct);
                 }
             },
             {   // presents the feedback.
@@ -172,6 +176,31 @@ function kickOffExperiment() {
             }
         ],
         timeline_variables : practice_items
+    }
+
+    let practice_results = {
+        type : jsPsychHtmlKeyboardResponse,
+        choices : [' '],
+        stimulus : function () {
+            let html;
+            if (pstats.practicePassed())
+                html = '<p>You scored ' + pstats.percentageCorrect() +
+                    '% correct, hence the show goes on</p>';
+            else
+                html = '<p>You scored ' + pstats.percentageCorrect() +
+                    '% correct , hence the practice is repeated</p>';
+            html += '<p>Press the space bar to continue.</p>'
+            return html;
+        }
+    }
+
+    let practice_loop = {
+        timeline : [practice_procedure, practice_results],
+        loop_function : function () {
+            let result = pstats.practicePassed() == false;
+            pstats.reset();
+            return result;
+        }
     }
 
     let test_procedure = {
@@ -198,17 +227,17 @@ function kickOffExperiment() {
     timeline.push(welcome_screen);
 
     // Obtain informed consent.
-    //timeline.push(consent_procedure);
+    timeline.push(consent_procedure);
 
     // add survey
-    //timeline.push(survey_procedure);
+    timeline.push(survey_procedure);
     
     // Add the different parts of the experiment to the timeline
     timeline.push(instruction_screen_practice1);
     timeline.push(instruction_screen_practice2);
     timeline.push(instruction_screen_practice3);
 
-    timeline.push(practice_procedure);
+    timeline.push(practice_loop);
     timeline.push(end_practice_screen);
     timeline.push(test_procedure);
     timeline.push(end_experiment);
