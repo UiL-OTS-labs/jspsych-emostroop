@@ -2,15 +2,10 @@
 const PRACTICE      = "PRACTICE";
 const CONGRUENT     = "CONGRUENT";
 const INCONGRUENT   = "INCONGRUENT";
+const NEUTRAL       = "NEUTRAL";
+const EMOTIONAL     = "EMOTIONAL";
 
 const PLUGIN_NAME   = "html-keyboard-response";
-
-// Lists 
-const LISTS = [
-    "list1",
-    "list2"
-    // "list3"
-];
 
 // colors
 const RED = "red";
@@ -18,31 +13,56 @@ const GREEN = "green";
 const YELLOW = "yellow";
 const BLUE = "blue";
 
+// Lists
+// Add more lists here when necessary.
+// remember to add an extra LIST_GROUPx array below
+// to describe the stimuli for this list. You might
+// also remove list2 for example to just use 1 list.
+// also add this list to the TEST_ITEMS array below.
+const LISTS = [
+    "list1",
+    "list2"
+    // "list3"
+];
+
 const PRACTICE_ITEMS = [
     {
         id : 1,
-        item_type : CONGRUENT,
+        item_type : PRACTICE, // CONGRUENT
         word : "red",
         color : RED
     },
     {
         id : 2,
-        item_type : INCONGRUENT,
+        item_type : PRACTICE, // INCONGRUENT
         word : "red",
         color : BLUE 
     },
     {
         id : 3,
-        item_type : CONGRUENT,
+        item_type : PRACTICE, // CONGRUENT
         word : "green",
         color : GREEN,
     },
     {
         id : 4,
-        item_type : INCONGRUENT,
+        item_type : PRACTICE, // INCONGRUENT
         word : "red",
         color : YELLOW
+    },
+    {
+        id : 5,
+        item_type : PRACTICE, // NEUTRAL
+        word : "book",
+        color : GREEN
+    },
+    {
+        id : 6,
+        item_type : EMOTIONAL,
+        word : "sad",
+        color : BLUE
     }
+
 ];
 
 /*
@@ -73,6 +93,18 @@ const LIST_GROUP1 = [
         item_type : INCONGRUENT,
         word : "red",
         color : YELLOW
+    },
+    {
+        id : 5,
+        item_type : NEUTRAL,
+        word : "fork",
+        color : GREEN
+    },
+    {
+        id : 6,
+        item_type : EMOTIONAL,
+        word : "tear",
+        color : BLUE
     }
 ];
 
@@ -104,6 +136,18 @@ const LIST_GROUP2 = [
         item_type : CONGRUENT,
         word : "yellow",
         color : YELLOW
+    },
+    {
+        id : 5,
+        item_type : NEUTRAL,
+        word : "fork",
+        color : YELLOW
+    },
+    {
+        id : 6,
+        item_type : EMOTIONAL,
+        word : "tear",
+        color : RED
     }
 ];
 
@@ -112,8 +156,10 @@ const LIST_GROUP2 = [
 // ...
 // ]
 
-// These lists are not a between subjects variable, but
-// define which list a participant gets.
+// This list can be use as a between subject variable
+// e.g. GROUP1 gets a manipulation not present in
+// GROUP2, these groups may also be used to create
+// a latin square design
 const TEST_ITEMS = [
     {list_name: LISTS[0], table: LIST_GROUP1},
     {list_name: LISTS[1], table: LIST_GROUP2}

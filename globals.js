@@ -33,24 +33,9 @@ const TRUE_BUTTON_TEXT = "true";
 const FALSE_BUTTON_TEXT = "false";
 const CONTINUE_BUTTON_TEXT = "continue";
 
-// Duration of the fixation cross.
-const FIX_DUR = -1;
-// The buttons to terminate presentation of the fix cross
-const FIX_CHOICES = [32]; // 32 == " " a spacebar to continue
-
 // The duration in ms for how long the finished instruction
 // is on screen.
 const FINISH_TEXT_DUR = 3000;
-
-// If no grouping character is selected or if it is null as in this example
-// every word is a group of its own: sentences are split on whitespace.
-// each word will be a one word group
-const GROUPING_STRING = null;
-// Or create word groups based on a splitting string
-// Create groups using a "/". Note that every occurrence
-// of a "/" will lead to presentation as a word group and the a "/" itself
-// will not be displayed in the stimulus
-//const GROUPING_STRING = "/";
 
 // Stores the correct reponse for a given color.
 const CORRECT_RESPONSES = {
@@ -65,3 +50,7 @@ const FEEDBACK_DURATION = 1000;
 const WORD_FONT_FAM     = "DejavuSansMono";
 const WORD_FONT_SIZE    = "50px";
 const WORD_FONT_WEIGHT  = "bold";
+
+// The percentage correct responses required in order to advance
+// from practice to test phase.
+const REQ_PRAC_CORRECT = 75;
