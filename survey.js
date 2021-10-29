@@ -168,11 +168,11 @@ let survey_review = {
             <p>Is this information correct?</p>
             `;
     },
-    choices: [TRUE_BUTTON_TEXT, FALSE_BUTTON_TEXT],
+    choices: [INCORRECT_BUTTON_TEXT, CORRECT_BUTTON_TEXT],
     response_ends_trial: true,
-    on_finish: function(data){
-        // Repeat the survey if true (0) was not pressed
-        repeat_survey = data.response !== 0;
+    on_finish: function(data) {
+        // Repeat the survey if the participant finds the survey fields incorrect
+        repeat_survey = this.choices[data.response] !== CORRECT_BUTTON_TEXT;
     }
 };
 

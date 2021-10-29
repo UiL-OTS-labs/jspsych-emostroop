@@ -32,6 +32,8 @@ const OK_BUTTON_TEXT = "ok";
 const TRUE_BUTTON_TEXT = "true";
 const FALSE_BUTTON_TEXT = "false";
 const CONTINUE_BUTTON_TEXT = "continue";
+const CORRECT_BUTTON_TEXT = "correct"
+const INCORRECT_BUTTON_TEXT = "incorrect"
 
 // The duration in ms for how long the finished instruction
 // is on screen.
