@@ -178,6 +178,30 @@ function kickOffExperiment() {
         timeline_variables : practice_items
     }
 
+    let prepare_procedure = { // count down with a blank screen in the last iteration
+        timeline : [
+            {
+                type : jsPsychHtmlKeyboardResponse,
+                trial_duration : 1000, // 1 second
+                stimulus : function() {
+                    let count = jsPsych.timelineVariable('count');
+                    let html = "";
+                    if (count > 0) {
+                        html = PREPARE_INSTRUCTION + `<h1>${count}</h1>`
+                    }
+                    return html;
+                }
+            }
+        ],
+        timeline_variables : [
+            {count : 4},
+            {count : 3},
+            {count : 2},
+            {count : 1},
+            {count : 0}
+        ]
+    };
+
     let practice_results = {
         type : jsPsychHtmlKeyboardResponse,
         choices : [' '],
@@ -195,7 +219,7 @@ function kickOffExperiment() {
     }
 
     let practice_loop = {
-        timeline : [practice_procedure, practice_results],
+        timeline : [prepare_procedure, practice_procedure, practice_results],
         loop_function : function () {
             let result = pstats.practicePassed() == false;
             pstats.reset();
@@ -239,6 +263,7 @@ function kickOffExperiment() {
 
     timeline.push(practice_loop);
     timeline.push(end_practice_screen);
+    timeline.push(prepare_procedure);
     timeline.push(test_procedure);
     timeline.push(end_experiment);
 

@@ -81,6 +81,10 @@ const PRE_TEST_INSTRUCTION =
         "<i>Press the spacebar to continue.</i>"                        + 
     "</p>";
 
+const PREPARE_INSTRUCTION =
+    "<h2>Zet je vingers klaar op de knoppen de taak begint</h2>";
+
+
 const POST_TEST_INSTRUCTION =
     "<h1>End of the experiment part.</h1>"                              +
     "<h2>Many thanks for participating</h2>";
