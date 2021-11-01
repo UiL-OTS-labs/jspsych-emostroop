@@ -22,6 +22,13 @@ const MAX_SUCCEEDING_ITEMS_OF_TYPE = 2
 const MIN_WIDTH = 1000;
 const MIN_HEIGHT = 600;
 
+const USED_COLORS = [
+    "rood",
+    "groen",
+    "blauw",
+    "geel"
+];
+
 // The ISI will be added after each trial/stimulus
 const ISI = 500; //ms
 
@@ -32,19 +39,42 @@ const OK_BUTTON_TEXT = "ok";
 const TRUE_BUTTON_TEXT = "true";
 const FALSE_BUTTON_TEXT = "false";
 const CONTINUE_BUTTON_TEXT = "continue";
-const CORRECT_BUTTON_TEXT = "correct"
-const INCORRECT_BUTTON_TEXT = "incorrect"
+const CORRECT_BUTTON_TEXT = "correct";
+const INCORRECT_BUTTON_TEXT = "incorrect";
+
+// The key to use when continueing after an instruction.
+const CONTINUE_KEY = " ";
 
 // The duration in ms for how long the finished instruction
 // is on screen.
 const FINISH_TEXT_DUR = 3000;
 
 // Stores the correct reponse for a given color.
-const CORRECT_RESPONSES = {
-    red     : "1",
-    green   : "2",
-    blue    : "9",
-    yellow  : "0"
+let correct_responses = undefined;
+
+// A list of mappings between colors and desired responses.
+// one of these will be 
+const LIST_CORRECT_RESPONSES = [
+    {
+        red     : "1",
+        green   : "2",
+        blue    : "9",
+        yellow  : "0"
+    },
+    {
+        yellow  : "1",
+        blue    : "2",
+        green   : "9",
+        red     : "0"
+    }
+]
+
+// Translation table to turn English color codes into Dutch
+const COL_TRANS = {
+    "red"   : "rood",
+    "green" : "groen",
+    "blue"  : "blauw",
+    "yellow": "geel"
 };
 
 const FEEDBACK_DURATION = 1000;

@@ -59,11 +59,20 @@ const jsPsych = initJsPsych(
     }
 );
 
+function setupResponseKeys() {
+    let indices = [0, 1];
+    let shuffled = jsPsych.randomization.shuffle(indices);
+    let index = shuffled[0];
+    correct_responses = LIST_CORRECT_RESPONSES[index];
+}
+
 const KEY_CODE_SPACE = 32;
 
 // this function will eventually run the jsPsych timeline
 function kickOffExperiment() {
 
+    setupResponseKeys();
+    setupInstructions();
     let stimuli = pickRandomList();
     let subject_id = jsPsych.randomization.randomID(8);
     let practice_items = getPracticeItems().table;
@@ -104,26 +113,26 @@ function kickOffExperiment() {
     let instruction_screen_practice1 = {
         type : jsPsychHtmlKeyboardResponse,
         stimulus : PRE_PRACTICE_INSTRUCTION1,
-        choices : ["Enter"],
+        choices : [CONTINUE_KEY],
         response_ends_trial : true
     };    
     let instruction_screen_practice2 = {
         type : jsPsychHtmlKeyboardResponse,
-        stimulus : PRE_PRACTICE_INSTRUCTION2,
-        choices : ["Enter"],
+        stimulus : key_instruction,
+        choices : [CONTINUE_KEY],
         response_ends_trial : true
     };    
     let instruction_screen_practice3 = {
         type : jsPsychHtmlKeyboardResponse,
         stimulus : PRE_PRACTICE_INSTRUCTION3,
-        choices : ["Enter"],
+        choices : [CONTINUE_KEY],
         response_ends_trial : true
     };    
 
     let end_practice_screen = {
         type : jsPsychHtmlKeyboardResponse,
         stimulus : PRE_TEST_INSTRUCTION,
-        choices : [" "],
+        choices : [CONTINUE_KEY],
         response_ends_trial : true
     };
 
@@ -158,14 +167,14 @@ function kickOffExperiment() {
                 choices : ['1', '2', '9', '0'],
                 on_finish : function (data) {
                     let color = jsPsych.timelineVariable('color');
-                    practice_procedure.last_correct = data.response === CORRECT_RESPONSES[color];
-                    data.correct = data.response === CORRECT_RESPONSES[color];
+                    practice_procedure.last_correct = data.response === correct_responses[color];
+                    data.correct = data.response === correct_responses[color];
                     pstats.appendResult(data.correct);
                 }
             },
             {   // presents the feedback.
                 type : jsPsychHtmlKeyboardResponse,
-                choices : [], //jsPsych.NO_KEYS],
+                choices : [],
                 trial_duration : FEEDBACK_DURATION,
                 stimulus : function () {
                     if (practice_procedure.last_correct)
@@ -208,12 +217,12 @@ function kickOffExperiment() {
         stimulus : function () {
             let html;
             if (pstats.practicePassed())
-                html = '<p>You scored ' + pstats.percentageCorrect() +
-                    '% correct, hence the show goes on</p>';
+                html = '<p>Je had ' + pstats.percentageCorrect() +
+                    '% correct. Je gaat nu door naar het volgende gedeelte.</p>';
             else
                 html = '<p>You scored ' + pstats.percentageCorrect() +
-                    '% correct , hence the practice is repeated</p>';
-            html += '<p>Press the space bar to continue.</p>'
+                    '% correct. We zullen nog een keer oefenen';
+            html += '<p>Druk op de spatiebalk om door te gaan.</p>'
             return html;
         }
     }
@@ -235,8 +244,7 @@ function kickOffExperiment() {
                 choices : ['1', '2', '9', '0'],
                 on_finish : function (data) {
                     let color = jsPsych.timelineVariable('color');
-                    practice_procedure.last_correct = data.response === CORRECT_RESPONSES[color];
-                    data.correct = data.response === data.response === CORRECT_RESPONSES[color];
+                    data.correct = data.response === correct_responses[color];
                 }
             }
         ],
@@ -273,7 +281,7 @@ function kickOffExperiment() {
     }
     else { // or bail out.
         let paragraph = document.createElement("p")
-        paragraph.innerHTML = "Please run this experiment on a pc or laptop";
+        paragraph.innerHTML = "Probeer dit experiment te draaien op een pc of laptop.";
         document.body.appendChild(paragraph);
     };
 }
