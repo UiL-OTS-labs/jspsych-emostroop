@@ -1,28 +1,31 @@
+'use strict'
 
-const WELCOME_INSTRUCTION =
-    "<h1>Dear participant,</h1>"                                        +
-    "<h2>"                                                              +
-        "Welcome in this experiment."                                   +
-    "</h2>"                                                             +
-    "<p>"                                                               +
-        "First you will see some information about the experiment and " +
-        "what type of data we will be collecting and why. You can "     +
-        "then consent to participate in the experiment (or not, in "    +
-        "which case the experiment will terminate immediately and no "  +
-        "data will be saved)."                                          +
-    "</p>"                                                              +
-    "<p>"                                                               +
-        "Next, you will fill out a short questionnaire. After the "     +
-        "questionnaire you will get some more instructions on what to " +
-        "do."                                                           +
-    "</p>"                                                              +
-    "<p>"                                                               +
-        "Press the spacebar to continue."                               +
-    "</p>";
+let WELCOME_INSTRUCTION = `
+<h1>
+    Beste deelnemer,
+</h1>
+<h2>
+    Welkom bij het experiment ‘Gekleurde Woorden’.
+</h1>
+<p>
+    Eerst zal je wat informatie zien over het experiment en
+    welke gegevens we zullen verzamelen.<br>Je kan dan aangeven
+    of je akkoord gaat met het formulier van geinformeerde toestemmng
+    of dat je niet akkoord gaat,<br>in het laatste geval wordt geen data 
+    verzameld en het experiment zal dan direct stoppen.
+</p>
+<p>
+    Dan krijg je een korte vragenlijst. Na de vragen 
+    krijg je extra instructies over hoe het experiment
+    wordt afgenomen.
+</p>
+<p>
+    Druk op de spatiebalk om door te gaan.
+</p>`;
 
 const PRE_PRACTICE_INSTRUCTION1 =
     "<h1>"                                                              +
-        "Welkom bij het experiment ‘Gekleurde Woorden’. "               +
+        "Vervolg instructies."                                          +
     "</h1>"                                                             +
     "<p>"                                                               +
         "Je krijgt zo meteen een reeks woorden te zien "                +
@@ -36,24 +39,70 @@ const PRE_PRACTICE_INSTRUCTION1 =
         "krijg je het volgende woord te zien. "                         +
     "</p>"                                                              +
     "<p>"                                                               +
-        "Klik op enter om door "                                        +
+        "Klik op de spatiebalk om door "                                +
         "te gaan naar de volgende pagina."                              +
     "</p>"                                                              ;
 
-const PRE_PRACTICE_INSTRUCTION2 =
-    "<p>"                                                               +
-        "Om de kleur van een woord te benoemen, druk je op een toets. " + 
-        "Je gebruikt de toetsen 1, 2, 9 en 0."                          +
-    "</p>"                                                              +
-    "<p>"                                                               +
-        "De toets <b>1</b> staat voor rood,<br>"                        +
-        "de toets <b>2</b> staat voor groen.<br> "                      +
-        "De toets <b>9</b> staat voor blauw,<br> "                      +
-        "de toets <b>0</b> staat voor geel.<br>"                        +
-    "</p>"                                                              +
-    "<p>"                                                               +
-        "Druk op enter om verder te gaan."                              +
-    "</p>"                                                              ;
+// Is setup in setupInstructions below.
+let key_instruction = undefined;
+
+/**
+ * Returns the instruction about the desired responsekey for a 
+ * font color
+ *
+ * Return {string} a number of lines with a break on the end. 
+ */
+
+function colorResponseTable() {
+
+    let instruction = "";
+
+    function responseString(response_key) {
+        for (const color in correct_responses) {
+            if (correct_responses[color] === response_key) {
+                let tcolor = COL_TRANS[color];
+                return `De toets <b>${response_key}</b> staat voor ${tcolor}`;
+            }
+        }
+        console.error(`unhandeled key ${response_key}`);
+        return null;
+    }
+
+    for (let i = 0; i < RESPONSE_KEYS.length; i++) {
+        instruction += responseString(RESPONSE_KEYS[i]);
+        if (i < RESPONSE_KEYS.length - 1) {
+            instruction += ",";
+            instruction += "<br>";
+        }
+        else {
+            instruction += '.';
+        }
+    }
+    return instruction;
+}
+
+
+/**
+ * Sets up the right instructions for the desired keys in the experiment.
+ */
+function setupInstructions()
+{
+
+    
+    let instruction = `<p>
+        Om de kleur van een woord te benoemen, druk je op een toets. 
+        Je gebruikt de toetsen 1, 2, 9 en 0.
+    </p>
+    <p>`;
+
+    instruction += colorResponseTable();
+
+    instruction += `\n</p>
+    <p>
+        Druk op de spatiebalk om verder te gaan.
+    </p>`;
+    key_instruction = instruction;
+}
 
 const PRE_PRACTICE_INSTRUCTION3 =
     "<p>"                                                               +
@@ -70,21 +119,26 @@ const PRE_PRACTICE_INSTRUCTION3 =
         "is ook belangrijk om het juiste antwoord te geven."            +
     "</p>"                                                              +
     "<p>"                                                               +
-        "Druk op enter om verder te gaan."                              +
+        "Druk op de spatie balk om verder te gaan."                     +
     "</p>"                                                              ;
 
 const PRE_TEST_INSTRUCTION = 
     "<p>"                                                               +
-        "End of the practice part."                                     +
+        "Einde van het oefen gedeelte."                                 +
     "</p>"                                                              +
     "<p>"                                                               +
-        "<i>Press the spacebar to continue.</i>"                        + 
+        "<i>Druk op de spatiebalk om door te gaan.</i>"                 + 
     "</p>";
 
+const PREPARE_INSTRUCTION =
+    "<h2>Zet je vingers klaar op de knoppen de taak begint</h2>";
+
+
 const POST_TEST_INSTRUCTION =
-    "<h1>End of the experiment part.</h1>"                              +
-    "<h2>Many thanks for participating</h2>";
+    "<h1>Einde van het experiment</h1>"                                 +
+    "<h2>Hartelijk bedankt voor het meedoen!</h2>";
 
 const FINISHED_NO_CONSENT = 
-    "<h1>The experiment finished, because no consent was given</h1>"    +
-    "<p>You can close this tab now.</p>";
+    "<h1>Het experient gaat niet door omdat je niet akkoord ben gegaan " +
+    "met het geïnformeerde toestemmingsformulier</h1>"                   +
+    "<p>Je kan dit tabblad sluiten.</p>";

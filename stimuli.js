@@ -1,3 +1,5 @@
+'use strict'
+
 // Item types
 const PRACTICE      = "PRACTICE";
 const CONGRUENT     = "CONGRUENT";
@@ -7,7 +9,7 @@ const EMOTIONAL     = "EMOTIONAL";
 
 const PLUGIN_NAME   = "html-keyboard-response";
 
-// colors
+// colors used for CSS properties, so don't translate
 const RED = "red";
 const GREEN = "green";
 const YELLOW = "yellow";
@@ -29,37 +31,37 @@ const PRACTICE_ITEMS = [
     {
         id : 1,
         item_type : PRACTICE, // CONGRUENT
-        word : "red",
+        word : "rood",
         color : RED
     },
     {
         id : 2,
         item_type : PRACTICE, // INCONGRUENT
-        word : "red",
+        word : "rood",
         color : BLUE 
     },
     {
         id : 3,
         item_type : PRACTICE, // CONGRUENT
-        word : "green",
+        word : "groen",
         color : GREEN,
     },
     {
         id : 4,
         item_type : PRACTICE, // INCONGRUENT
-        word : "red",
+        word : "rood",
         color : YELLOW
     },
     {
         id : 5,
         item_type : PRACTICE, // NEUTRAL
-        word : "book",
+        word : "boek",
         color : GREEN
     },
     {
         id : 6,
         item_type : EMOTIONAL,
-        word : "sad",
+        word : "verdrietig",
         color : BLUE
     }
 
@@ -73,37 +75,37 @@ const LIST_GROUP1 = [
     {
         id : 1,
         item_type : CONGRUENT,
-        word : "red",
+        word : "rood",
         color : RED
     },
     {
         id : 2,
         item_type : INCONGRUENT,
-        word : "red",
+        word : "rood",
         color : BLUE 
     },
     {
         id : 3,
         item_type : CONGRUENT,
-        word : "green",
+        word : "groen",
         color : GREEN,
     },
     {
         id : 4,
         item_type : INCONGRUENT,
-        word : "red",
+        word : "rood",
         color : YELLOW
     },
     {
         id : 5,
         item_type : NEUTRAL,
-        word : "fork",
+        word : "vork",
         color : GREEN
     },
     {
         id : 6,
         item_type : EMOTIONAL,
-        word : "tear",
+        word : "traan",
         color : BLUE
     }
 ];
@@ -116,37 +118,37 @@ const LIST_GROUP2 = [
     {
         id : 1,
         item_type : INCONGRUENT,
-        word : "red",
+        word : "rood",
         color : BLUE, 
     },
     {
         id : 2,
         item_type : CONGRUENT,
-        word : "red",
+        word : "rood",
         color : RED 
     },
     {
         id : 3,
         item_type : INCONGRUENT,
-        word : "green",
+        word : "groen",
         color : RED,
     },
     {
         id : 4,
         item_type : CONGRUENT,
-        word : "yellow",
+        word : "geel",
         color : YELLOW
     },
     {
         id : 5,
         item_type : NEUTRAL,
-        word : "fork",
+        word : "vork",
         color : YELLOW
     },
     {
         id : 6,
         item_type : EMOTIONAL,
-        word : "tear",
+        word : "traan",
         color : RED
     }
 ];
