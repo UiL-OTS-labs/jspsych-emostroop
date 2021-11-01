@@ -1,4 +1,4 @@
-# jspsych-emostroop
+# jspsych-stroop
 Emotional strooptask using jspsych
 
 ## Description
