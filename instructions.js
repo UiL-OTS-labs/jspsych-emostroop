@@ -47,11 +47,15 @@ const PRE_PRACTICE_INSTRUCTION1 =
 let key_instruction = undefined;
 
 /**
- * Sets up the right instructions for the desired keys in the experiment.
+ * Returns the instruction about the desired responsekey for a 
+ * font color
+ *
+ * Return {string} a number of lines with a break on the end. 
  */
-function setupInstructions()
-{
-    let response_keys = ["1", "2", "9", "0"];
+
+function colorResponseTable() {
+
+    let instruction = "";
 
     function responseString(response_key) {
         for (const color in correct_responses) {
@@ -63,16 +67,10 @@ function setupInstructions()
         console.error(`unhandeled key ${response_key}`);
         return null;
     }
-    
-    let instruction = `<p>
-        Om de kleur van een woord te benoemen, druk je op een toets. 
-        Je gebruikt de toetsen 1, 2, 9 en 0.
-    </p>
-    <p>`;
 
-    for (let i = 0; i < response_keys.length; i++) {
-        instruction += responseString(response_keys[i]);
-        if (i < response_keys.length - 1) {
+    for (let i = 0; i < RESPONSE_KEYS.length; i++) {
+        instruction += responseString(RESPONSE_KEYS[i]);
+        if (i < RESPONSE_KEYS.length - 1) {
             instruction += ",";
             instruction += "<br>";
         }
@@ -80,6 +78,24 @@ function setupInstructions()
             instruction += '.';
         }
     }
+    return instruction;
+}
+
+
+/**
+ * Sets up the right instructions for the desired keys in the experiment.
+ */
+function setupInstructions()
+{
+
+    
+    let instruction = `<p>
+        Om de kleur van een woord te benoemen, druk je op een toets. 
+        Je gebruikt de toetsen 1, 2, 9 en 0.
+    </p>
+    <p>`;
+
+    instruction += colorResponseTable();
 
     instruction += `\n</p>
     <p>

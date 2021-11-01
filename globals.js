@@ -29,6 +29,8 @@ const USED_COLORS = [
     "geel"
 ];
 
+let RESPONSE_KEYS = ["1", "2", "9", "0"];
+
 // The ISI will be added after each trial/stimulus
 const ISI = 500; //ms
 

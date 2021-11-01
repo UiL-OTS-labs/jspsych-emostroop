@@ -213,7 +213,7 @@ function kickOffExperiment() {
 
     let practice_results = {
         type : jsPsychHtmlKeyboardResponse,
-        choices : [' '],
+        choices : [CONTINUE_KEY],
         stimulus : function () {
             let html;
             if (pstats.practicePassed())
@@ -227,11 +227,36 @@ function kickOffExperiment() {
         }
     }
 
+    let key_reminder = {
+        type : jsPsychHtmlKeyboardResponse,
+        choices : [CONTINUE_KEY],
+        stimulus : function () {
+            let html = "<h>Ter herinnering:</h>";
+            html += "<p>";
+            html += colorResponseTable();
+            html += "</p>";
+            html += "<p>Druk op de spatiebalk om verder te gaan.</p>";
+            return html;
+        }
+    }
+
     let practice_loop = {
-        timeline : [prepare_procedure, practice_procedure, practice_results],
+        loop_count : 0,
+        timeline : [
+            {
+                timeline : [key_reminder],
+                conditional_function : function () {
+                    return practice_loop.loop_count > 0;
+                }
+            },
+            prepare_procedure,
+            practice_procedure,
+            practice_results
+        ],
         loop_function : function () {
             let result = pstats.practicePassed() == false;
             pstats.reset();
+            practice_loop.loop_count += 1;
             return result;
         }
     }
