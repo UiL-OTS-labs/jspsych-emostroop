@@ -1,9 +1,9 @@
 # jspsych-stroop
-Emotional strooptask using jspsych
+Strooptask using jspsych
 
 ## Description
 This task is a general form of a STROOP task. Currently, It uses a CONGRUENT 
-stimuli e.g. the word "red" in a redish font type and INCONGUENT e.g.
+stimuli e.g. the word "red" in a reddish font type and INCONGRUENT e.g.
 "blue" in a yellowish font type. Just like a regular font type. The general
 flow is as follows:
 - A participant is welcomed to the task
@@ -12,7 +12,7 @@ flow is as follows:
 - Some general information (gender, age, etc.) is gathered from the participant
 - The participant is instructed on how to do the strooptask
 - The participant practices a number of trials
-  - The participant should be able achieve a given percentage correct, otherwise
+  - The participant should achieve a given percentage correct, otherwise
     the practice block repeats.
 - The participant is given final instructions.
 - The participant runs through all of the trials of the stroop task
