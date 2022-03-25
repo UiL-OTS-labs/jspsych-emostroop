@@ -26,10 +26,10 @@ function main() {
 
     // Option 2: server side balancing:
     // Make sure you have matched your groups on the dataserver with the
-    // lists in stimuli.js..
+    // lists in stimuli.js.
     // This experiment uses groups/lists list1, and list2 by default (see
     // stimuli.js).
-    // Hence, unless you change lists here, you should created matching
+    // Hence, unless you change lists here, you should have created matching
     // groups there.
     // uil.session.start(ACCESS_KEY, (group_name) => {
     //     let stimuli = findList(group_name);
