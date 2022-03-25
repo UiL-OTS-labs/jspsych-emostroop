@@ -49,7 +49,7 @@ const CONTINUE_KEY = " ";
 
 // The duration in ms for how long the finished instruction
 // is on screen.
-const FINISH_TEXT_DUR = 3000;
+const FINISH_TEXT_DUR = 30000;
 
 // Stores the correct reponse for a given color.
 let correct_responses = undefined;
