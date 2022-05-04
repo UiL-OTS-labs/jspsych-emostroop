@@ -1,6 +1,5 @@
-'use strict'
 
-let WELCOME_INSTRUCTION = `
+const WELCOME_INSTRUCTION = `
 <h1>
     Beste deelnemer,
 </h1>
@@ -41,7 +40,7 @@ const PRE_PRACTICE_INSTRUCTION1 =
     "<p>"                                                               +
         "Klik op de spatiebalk om door "                                +
         "te gaan naar de volgende pagina."                              +
-    "</p>"                                                              ;
+    "</p>";
 
 // Is setup in setupInstructions below.
 let key_instruction = undefined;
@@ -120,7 +119,7 @@ const PRE_PRACTICE_INSTRUCTION3 =
     "</p>"                                                              +
     "<p>"                                                               +
         "Druk op de spatie balk om verder te gaan."                     +
-    "</p>"                                                              ;
+    "</p>";
 
 const PRE_TEST_INSTRUCTION = 
     "<p>"                                                               +
@@ -142,3 +141,4 @@ const FINISHED_NO_CONSENT =
     "<h1>Het experient gaat niet door omdat je niet akkoord ben gegaan " +
     "met het geïnformeerde toestemmingsformulier</h1>"                   +
     "<p>Je kan dit tabblad sluiten.</p>";
+
