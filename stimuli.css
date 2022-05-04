@@ -1,0 +1,61 @@
+
+body {
+    background-color: black;
+}
+
+.jspsych-display-element {
+    color : white;
+}
+
+p.word {
+    font-family: "Open Sans", Arial;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+p.target {
+    font-family: "Open Sans", Arial;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+p.word {
+    color : white;
+}
+
+p.black {
+    color : black;
+}
+
+p.default_color {
+    color : black;
+}
+
+p.red {
+    color : red;
+}
+
+p.yellow {
+    color : yellow;
+}
+
+p.green {
+    color : green;
+}
+
+p.blue {
+    color : blue;
+}
+
+p.feedback {
+    font-family: "Open Sans", Arial;
+    font-size: 30px;
+}
+
+p.incorrect {
+    color : red;
+}
+
+p.correct {
+    color : green;
+}
