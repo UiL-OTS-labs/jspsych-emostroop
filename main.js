@@ -101,7 +101,7 @@ function getTimeline(stimuli) {
                     `font-size:${WORD_FONT_SIZE};`      +
                     `font-weight=${WORD_FONT_WEIGHT}`;
 
-        let html = `<p style="${style}">${word}</p>`;
+        let html = `<p class="target ${color}">${word}</p>`;
         return html;
     }
 
@@ -127,9 +127,9 @@ function getTimeline(stimuli) {
                 trial_duration : FEEDBACK_DURATION,
                 stimulus : function () {
                     if (practice_procedure.last_correct)
-                        return "<p>correct</p>";
+                        return "<p class='feedback correct'>correct</p>";
                     else
-                        return "<p>incorrect</p>";
+                        return "<p class='feedback incorrect'>incorrect</pcls>";
                 }
             }
         ],
