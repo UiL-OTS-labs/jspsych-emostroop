@@ -265,9 +265,12 @@ function kickOffExperiment(stimuli, timeline) {
     let list_name = stimuli.list_name;
 
     if (PSEUDO_RANDOMIZE) {
-        let shuffled = uil.randomization.randomizeStimuli(
+        let shuffled = uil.randomization.randomizeStimuliConstraints(
             test_items,
-            max_same_type = MAX_SUCCEEDING_ITEMS_OF_TYPE
+            constraints = {
+                item_type : MAX_SUCCEEDING_ITEMS_OF_TYPE,
+                color : MAX_SUCCEEDING_ITEMS_OF_TYPE
+            }
         );
         if (shuffled !== null)
             test_items = shuffled;
