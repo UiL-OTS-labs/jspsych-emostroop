@@ -142,3 +142,10 @@ const FINISHED_NO_CONSENT =
     "met het geïnformeerde toestemmingsformulier</h1>"                   +
     "<p>Je kan dit tabblad sluiten.</p>";
 
+const FINISHED_REJECTION =
+    "<h1>"													+
+		"Helaas voldoe je niet aan de vereisten "			+
+		"om mee te kunnen doen aan dit experiment."			+
+	"</h1>"    +
+	"</h2>Alsnog hartelijk dank voor je interesse en we wensen je een prettige dag.</h2>"   +
+    "<p>Je kunt dit tabblad nu sluiten.</p>";

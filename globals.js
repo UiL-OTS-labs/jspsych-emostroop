@@ -32,7 +32,7 @@ const USED_COLORS = [
 let RESPONSE_KEYS = ["1", "2", "9", "0"];
 
 // The ISI will be added after each trial/stimulus
-const ISI = 500; //ms
+const ISI = 150; //ms
 
 // Fragments of text to display on buttons
 const YES_BUTTON_TEST = "yes"
@@ -44,7 +44,7 @@ const CONTINUE_BUTTON_TEXT = "continue";
 const CORRECT_BUTTON_TEXT = "correct";
 const INCORRECT_BUTTON_TEXT = "incorrect";
 
-// The key to use when continueing after an instruction.
+// The key to use when continuing after an instruction.
 const CONTINUE_KEY = " ";
 
 // The duration in ms for how long the finished instruction
