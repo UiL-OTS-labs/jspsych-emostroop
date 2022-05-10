@@ -125,6 +125,7 @@ function getTimeline(stimuli) {
                 type : jsPsychHtmlKeyboardResponse,
                 choices : [],
                 trial_duration : FEEDBACK_DURATION,
+                post_trial_gap : ISI,
                 stimulus : function () {
                     if (practice_procedure.last_correct)
                         return "<p class='feedback correct'>correct</p>";
@@ -215,6 +216,7 @@ function getTimeline(stimuli) {
             {   // presents the word
                 type : jsPsychHtmlKeyboardResponse,
                 stimulus : present_word,
+                post_trial_gap: ISI,
                 choices : ['1', '2', '9', '0'],
                 on_finish : function (data) {
                     let color = jsPsych.timelineVariable('color');
