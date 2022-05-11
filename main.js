@@ -268,8 +268,9 @@ function kickOffExperiment(stimuli, timeline) {
         let shuffled = uil.randomization.randomizeStimuliConstraints(
             test_items,
             constraints = {
-                item_type : MAX_SUCCEEDING_ITEMS_OF_TYPE,
-                color : MAX_SUCCEEDING_ITEMS_OF_TYPE
+                item_type : MAX_SUCCESSIVE_ITEMS_OF_TYPE,
+                color : MAX_SUCCESSIVE_ITEMS_OF_TYPE,
+                word : MAX_SUCCESSIVE_WORDS
             }
         );
         if (shuffled !== null)
