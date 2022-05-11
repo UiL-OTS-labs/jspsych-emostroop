@@ -13,7 +13,9 @@ const ACCESS_KEY = '00000000-0000-0000-0000-000000000000';
 // Whether or not to pseudorandomize the test items
 const PSEUDO_RANDOMIZE = true;
 // The maximum number of items with a similar itemtype in a row
-const MAX_SUCCEEDING_ITEMS_OF_TYPE = 2
+const MAX_SUCCESSIVE_ITEMS_OF_TYPE = 2;
+// The maximum number of successive words
+const MAX_SUCCESSIVE_WORDS = 1;
 
 // This defines the dimensions of the canvas on which
 // the sentences are drawn. Keep in mind, that you'll exclude

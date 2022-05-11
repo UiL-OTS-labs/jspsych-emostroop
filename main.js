@@ -1,5 +1,5 @@
 
-const jsPsych = initJsPsych(
+const jsPsych = initJsPsych (
     {
         exclusions: {
             min_width : MIN_WIDTH,
@@ -41,6 +41,22 @@ function getTimeline(stimuli) {
     
     setupResponseKeys();
     setupInstructions();
+
+    if (PSEUDO_RANDOMIZE) {
+        let shuffled = uil.randomization.randomizeStimuliConstraints(
+            stimuli.table,
+            constraints = {
+                item_type : MAX_SUCCESSIVE_ITEMS_OF_TYPE,
+                color : MAX_SUCCESSIVE_ITEMS_OF_TYPE,
+                word : MAX_SUCCESSIVE_WORDS
+            }
+        );
+        if (shuffled !== null)
+            stimuli.table = shuffled;
+        else
+            console.error('Unable to shuffle stimuli according constraints.')
+    }
+    console.debug(stimuli.table);
 
     let welcome_screen = {
         type : jsPsychHtmlKeyboardResponse,
@@ -264,19 +280,6 @@ function kickOffExperiment(stimuli, timeline) {
     let test_items = stimuli.table;
     let list_name = stimuli.list_name;
 
-    if (PSEUDO_RANDOMIZE) {
-        let shuffled = uil.randomization.randomizeStimuliConstraints(
-            test_items,
-            constraints = {
-                item_type : MAX_SUCCEEDING_ITEMS_OF_TYPE,
-                color : MAX_SUCCEEDING_ITEMS_OF_TYPE
-            }
-        );
-        if (shuffled !== null)
-            test_items = shuffled;
-        else 
-            console.error('Unable to shuffle stimuli according constraints.')
-    }
 
     // data one would like to add to __all__ trials, according to:
     // https://www.jspsych.org/overview/data/
