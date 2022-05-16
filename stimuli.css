@@ -8,13 +8,13 @@ body {
 }
 
 p.word {
-    font-family: "Open Sans", Arial;
+    font-family: "Open Sans", Arial, sans-serif;
     font-size: 40px;
     font-weight: bold;
 }
 
 p.target {
-    font-family: "Open Sans", Arial;
+    font-family: "Open Sans", Arial, sans-serif;
     font-size: 50px;
     font-weight: bold;
 }
@@ -48,14 +48,7 @@ p.blue {
 }
 
 p.feedback {
-    font-family: "Open Sans", Arial;
+    font-family: "Open Sans", Arial, sans-serif;
     font-size: 30px;
 }
 
-p.incorrect {
-    color : red;
-}
-
-p.correct {
-    color : green;
-}
