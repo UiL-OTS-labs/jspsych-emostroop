@@ -90,3 +90,5 @@ const WORD_FONT_WEIGHT  = "bold";
 // The percentage correct responses required in order to advance
 // from practice to test phase.
 const REQ_PRAC_CORRECT = 75;
+
+const NUM_REPETITIONS = 2;
