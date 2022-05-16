@@ -263,6 +263,7 @@ function getTimeline(stimuli) {
 
     timeline.push(practice_loop);
     timeline.push(end_practice_screen);
+    timeline.push(key_reminder);
     timeline.push(prepare_procedure);
     timeline.push(test_procedure);
     timeline.push(end_experiment);
