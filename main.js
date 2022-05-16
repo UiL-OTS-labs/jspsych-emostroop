@@ -228,6 +228,7 @@ function getTimeline(stimuli) {
     }
 
     let test_procedure = {
+        nth_repetition : 0,
         timeline : [
             {   // presents the word
                 type : jsPsychHtmlKeyboardResponse,
@@ -237,10 +238,15 @@ function getTimeline(stimuli) {
                 on_finish : function (data) {
                     let color = jsPsych.timelineVariable('color');
                     data.correct = data.response === correct_responses[color];
+                    data.repetition = test_procedure.nth_repetition;
                 }
             }
         ],
-        timeline_variables : stimuli.table 
+        timeline_variables : stimuli.table ,
+        repetitions : NUM_REPETITIONS,
+        on_timeline_start : function () {
+            test_procedure.nth_repetition = test_procedure.nth_repetition + 1;
+        }
     };
 
     //////////////// timeline /////////////////////////////////
@@ -263,6 +269,7 @@ function getTimeline(stimuli) {
 
     timeline.push(practice_loop);
     timeline.push(end_practice_screen);
+    timeline.push(key_reminder);
     timeline.push(prepare_procedure);
     timeline.push(test_procedure);
     timeline.push(end_experiment);
