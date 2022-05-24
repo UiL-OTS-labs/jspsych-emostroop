@@ -134,6 +134,7 @@ function getTimeline(stimuli) {
                     let color = jsPsych.timelineVariable('color');
                     practice_procedure.last_correct = data.response === correct_responses[color];
                     data.correct = data.response === correct_responses[color];
+                    data.item_type = jsPsych.timelineVariable('item_type');
                     pstats.appendResult(data.correct);
                 }
             },
@@ -239,6 +240,7 @@ function getTimeline(stimuli) {
                     let color = jsPsych.timelineVariable('color');
                     data.correct = data.response === correct_responses[color];
                     data.repetition = test_procedure.nth_repetition;
+                    data.item_type = jsPsych.timelineVariable('item_type');
                 }
             }
         ],
